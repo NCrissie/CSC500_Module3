@@ -1,0 +1,47 @@
+# Nicholas R Crissie / CSC500
+# Module 3 CTA Part 2
+
+# Creating a dictionary to decrypt 24-hour to 12-hour format for user readability
+times = {
+    0: 'Midnight', 1: '1AM', 2: '2AM', 3: '3AM', 4: '4AM', 5: '5AM', 6: '6AM', 7: '7AM', 8: '8AM', 9: '9AM',
+    10: '10AM', 11: '11AM', 12: 'Noon', 13: '1PM', 14: '2PM', 15: '3PM', 16: '4PM', 17: '5PM', 18: '6PM',
+    19: '7PM', 20: '8PM', 21: '9PM', 22: '10PM', 23: '11PM'
+}
+
+# Asking for user input to put in their current time. I made this an if/else statement for two reasons:
+#   I'm not practiced in While loops yet. But aim on getting that down
+#   In case the user provides an input that doesn't correlate to the alarm clock
+time = int(input('What time is it right now?: \n'))
+
+# Here is the actual if/else statement
+# The first part of the statement ensures the input is valid. AKA greater or equal to zero, or less than 23
+# If the input is valid, the user gets a confirmation message, then we move to the next step
+if time >= 0 and time <= 23:
+    print(f'You said it is {time}:00 right now')
+    
+# If the user provides an invalid input, the prompt asks the user to reload, and try again with a valid input
+# This statement also exits the program
+else:
+    print('Invalid input. Please restart the program and type the current time in a 24 hour format.')
+    exit()
+
+# Here we are asking the user to input in how many hours they want the alarm to go off
+alert = int(input('When do you want your alarm to go off? (in hours): '))
+
+# This variable takes the time now, and the alarm input then adds them together, and takes the modulo of 24
+# This gives us our output solution
+alarm = (time + alert) % 24
+
+print()
+
+# This part displays the time for the alarm in a 24 hour format
+print('24 HOUR FORMAT')
+print(f'Your alarm will go off at: {alarm}:00')
+print()
+
+# Then we added this part just to practice code more, but also display what time the same alarm goes off in 12-hour time
+print('12 HOUR FORMAT')
+print(f'Which is also: {times[alarm]}\n')
+
+# Finally, we added a final input so the user can see the results
+input('Press enter to exit')
