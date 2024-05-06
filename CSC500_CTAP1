@@ -1,0 +1,57 @@
+# Nicholas R Crissie
+# CSC500 Module 3 CTA Part 1
+
+# First thing's first, we initialize  total_total outside our loop. We want to constantly update this value
+# with new adds. We also give it the value of 0 to avoid any bugs. Such as starting the program and just saying no
+total_total = 0
+
+# Ask the user if they want to start adding items
+choice = input("Would you like to add a food item? (yes/no)")
+
+# As long as the user doesn't say no, the loop keeps going
+# Also my first time doing a WHILE loop
+while choice != "no":
+
+    # Because the user said yes, we get here. Which is asking for the charge of the food
+    if choice == "yes":
+        food = float(input('Please enter the charge for your food: $'))
+
+        # Repeat back the input
+        print(f'You said your food cost: ${food:.2f}')
+
+        # I'm calculating the sales tax and gratuity within the loop, because the user will have a clean step-by-step
+        # with their totals. Instead of calculating the total_total and adding the two charges at the end
+        # Honestly I wish some stores would do this, so I know the tax for each item, instead of the bulk tax
+
+        # Calculate sales tax by itself
+        sales_tax = food * 0.07
+
+        # Calculate gratuity by itself
+        gratuity = food * 0.18
+
+        # The total for the food item is the cost, plus the tip, plus the sales tax
+        total = food + sales_tax + gratuity
+
+        # The total is then added to the total_total. But we want to preserve the values before as well
+        total_total += total
+
+        # We display the calculations as we go. White-spacing for readability
+        print(f'Your sales tax for this item is: ${sales_tax:.2f}')
+        print(f'Your gratuity for this item is: ${gratuity:.2f}')
+        print()
+        print(f'Your total so far is: ${total_total:.2f}')
+        print()
+    # If the user says anything besides yes or no, we ask them to try again
+    else:
+        print("Invalid input. Please enter 'yes' or 'no'.")
+
+    # We ask if there are any additional inputs. I mainly did this to practice my knowledge of loops
+    # But also because a calculator wouldn't do much good if it only calculates one item
+    choice = input("Would you like to add another item? (yes/no)")
+
+# When the loop exits, print the final total_total
+print()
+print(f'Your total is: ${total_total:.2f}\n')
+
+# Add a final input so the user can review everything before closing
+input('Press Enter to exit')
